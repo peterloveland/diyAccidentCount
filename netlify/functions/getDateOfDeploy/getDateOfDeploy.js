@@ -1,42 +1,37 @@
-const fetch = require("node-fetch");
+const faunadb = require('faunadb'),
+      q = faunadb.query;
+
+const adminClient = new faunadb.Client({
+   secret: process.env.FAUNADB_SERVER_SECRET
+});
+
+  exports.handler = async (event, context) => {
+    return adminClient.query(
+      q.Get(
+        q.Ref(q.Collection("storage"),'1')
+      )
+    )
+    .then((response) => {
+         /* Success! return the response with statusCode 200 */
+
+        var date1 = response.data.lastAccident;
+        var date2 = Date.now();
 
 
-exports.handler = async (event, context) => {
-  const { token } = process.env;
-  const { identity, user } = context.clientContext;
-  const usersUrl = `https://api.netlify.com/api/v1/sites/dd3c7e8b-8be1-4352-9e8d-1df6d336edbe/builds`;
-  console.log('event', JSON.stringify(event));
-  console.log('context', JSON.stringify(context));
-  const adminAuthHeader = 'Bearer ' + token;
-  let data
-  try {
-    data = await fetch(usersUrl, {
-      method: 'GET',
-      headers: {
-        Authorization: adminAuthHeader
-      },
-    }).then((res) => res.json())
-  } catch (e) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-        error: e.message
+        console.log({date2})
+        var Difference_In_Time = date2 - date1;
+        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+         return {
+              statusCode: 200,
+              body: JSON.stringify ( new Date(Difference_In_Days).getTime() )
+          }
+      }).catch((error) => {
+         /* Error! return the error with statusCode 400 */
+         return  {
+              statusCode: 400,
+              body: JSON.stringify(error)
+          }
       })
-    }
   }
-  var date1 = Date(  JSON.stringify(data[0].created_at)  );
-  var date2 = Date.now();
 
-  date1 = new Date(date1).getTime()
-  date2 = new Date(date2).getTime()
-
-  console.log(date1)
-  var Difference_In_Time = date2 - date1;
-  var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-
-
-  return {
-    statusCode: 200,
-    body: JSON.stringify ( new Date(Difference_In_Days).getTime() )
-  }
-};
