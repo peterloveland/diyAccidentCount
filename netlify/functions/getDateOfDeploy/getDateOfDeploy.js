@@ -1,5 +1,4 @@
-
-const fetch = request('node-fetch').default
+const fetch = require('node-fetch')
 
 const API_ENDPOINT = 'https://api.netlify.com/api/v1/sites?';
 
