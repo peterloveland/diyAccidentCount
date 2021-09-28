@@ -1,4 +1,4 @@
-const API_ENDPOINT = 'https://cat-fact.herokuapp.com/facts';
+const API_ENDPOINT = 'https://api.netlify.com/api/v1/sites?';
 
 const handler = async (event, context) => {
   try {
