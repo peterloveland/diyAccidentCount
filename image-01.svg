@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <style>
+      .a {
+        font-size: 81.07px;
+        fill: #171e1d;
+        font-family: Simpsonfont;
+      }
+    </style>
+  </defs>
+  <image width="1920" height="1080" xlink:href="image.png"/>
+  <text class="a" transform="matrix(0.84, -0.05, 0.05, 1, 1097.77, 291.91)">0</text>
+</svg>
