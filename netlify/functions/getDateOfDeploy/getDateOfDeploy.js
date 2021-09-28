@@ -2,7 +2,7 @@ const fetch = require('node-fetch')
 
 const API_ENDPOINT = 'https://api.netlify.com/api/v1/sites?';
 
-exports.handler = async (event, context) => {
+const handler = async (event, context) => {
   try {
     const response = await fetch(API_ENDPOINT);
     const data = await response.json();
