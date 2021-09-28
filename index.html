@@ -30,17 +30,14 @@
       const userAction = async () => {
         const response = await fetch('https://days-since-last-accident.peterloveland.com/.netlify/functions/getDateOfDeploy');
         const myJson = await response.json(); //extract JSON from the http response
-        document.getElementById("textElement").textContent = value;
+        // do something with myJson
+        console.log(myJson)
+        alert(myJson)
         return myJson
       }
-      const value = userAction().then(
-        data=> {
-          console.log(data)
-          document.getElementById("textElement").textContent = value;
-        }
-      )
+      userAction().then(data=>document.getElementById("textElement").textContent = value)
+      
 
     </script>
-
   </body>
 </html>
