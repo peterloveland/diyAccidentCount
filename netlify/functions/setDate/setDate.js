@@ -9,7 +9,7 @@ const adminClient = new faunadb.Client({
 let theTime = Date.now()
 
 const data = {
-  data: {"lastAccident": theTime}
+  data: {"lastAccident": `this isn't used: ${theTime}`}
 };
 
 
