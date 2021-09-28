@@ -8,11 +8,11 @@ const adminClient = new faunadb.Client({
 
 
   exports.handler = async (event, context) => {
-    console.log(q)
+    console.log(q.Time)
     return adminClient.query(
       q.Update(
         q.Ref(q.Collection("storage"),'1'),
-        {"lastAccident": new Date.now()}
+        {"lastAccident": Date.now()}
       )
     )
     .then((response) => {
