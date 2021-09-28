@@ -1,3 +1,6 @@
+import fetch from "node-fetch";
+
+
 const API_ENDPOINT = 'https://api.netlify.com/api/v1/sites?';
 
 const handler = async (event, context) => {
