@@ -12,7 +12,7 @@ const adminClient = new faunadb.Client({
     return adminClient.query(
       q.Update(
         q.Ref(q.Collection("storage"),'1'),
-        {"lastAccident": theTime}
+        {"lastAccident2": theTime}
       )
     )
     .then((response) => {
