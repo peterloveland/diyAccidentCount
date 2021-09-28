@@ -6,13 +6,18 @@ const adminClient = new faunadb.Client({
 });
 
 
+let theTime = Date.now()
+
+const data = {
+  data: {"lastAccident": theTime}
+};
+
 
   exports.handler = async (event, context) => {
-    let theTime = Date.now()
     return adminClient.query(
       q.Update(
         q.Ref(q.Collection("storage"),'1'),
-        {"lastAccident2asdas": theTime}
+        data
       )
     )
     .then((response) => {
