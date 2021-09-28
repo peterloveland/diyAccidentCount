@@ -14,7 +14,7 @@ const adminClient = new faunadb.Client({
     .then((response) => {
          /* Success! return the response with statusCode 200 */
 
-        var date1 = response.ts;
+        var date1 = response.data.lastAccident;
         var date2 = Date.now();
 
 
