@@ -14,7 +14,7 @@ const data = {
 
 
   exports.handler = async (event, context) => {
-    return adminClient.query(
+    await adminClient.query(
       q.Update(
         q.Ref(q.Collection("storage"),'1'),
         data
