@@ -1,14 +1,7 @@
 <html>
   <body>
 
-    <script>
-      const userAction = async () => {
-        const response = await fetch('https://days-since-last-accident.peterloveland.com/.netlify/functions/getDateOfDeploy');
-        const myJson = await response.json(); //extract JSON from the http response
-        // do something with myJson
-        alert(myJson)
-      }
-    </script>
+
   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;" xml:space="preserve">
     <style type="text/css">
       .st0{fill:none;}
@@ -31,14 +24,14 @@
     </g>
     </svg>
     <script>
-      const NetlifyAPI = require('netlify')
-      console.log(NetlifyAPI)
-  const listNetlifySites = async function () {
-    const client = new NetlifyAPI('1234myAccessToken')
-    const sites = await client.listSites()
-    console.log(sites)
-    return sites
-  }
-  </script>
+      const userAction = async () => {
+        const response = await fetch('https://days-since-last-accident.peterloveland.com/.netlify/functions/getDateOfDeploy');
+        const myJson = await response.json(); //extract JSON from the http response
+        // do something with myJson
+        console.log(myJson)
+        alert(myJson)
+      }
+      userAction().then(data=>console.log(data))
+    </script>
   </body>
 </html>
