@@ -6,7 +6,7 @@ const adminClient = new faunadb.Client({
 });
 
 
-let theTime = Date.now().toString
+let theTime = Date.now()
 
 const data = {
   data: {"lastAccident": theTime}
